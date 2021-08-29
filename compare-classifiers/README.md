@@ -51,7 +51,7 @@ Para correr una copia local de este proyecto siga estos sencillos pasos.
    ```
 3. Install packages
    ```sh
-   npm install XXX
+   pip install -r requirements.txt
    ```
 4. Run python script
    ```sh
@@ -72,7 +72,7 @@ Nearest Neighbors mostró las mejores puntuaciones globales en comparación con 
 <!-- CONTACT -->
 ## Contact
 
-Alexa Trujillo - [@your_twitter](https://twitter.com/aletrujim)
+Alexa Trujillo - [@aletrujim](https://twitter.com/aletrujim)
 
 Project Link: [https://github.com/aletrujim/SatRed](https://github.com/aletrujim/SatRed)
  
