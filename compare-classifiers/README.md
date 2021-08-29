@@ -1,5 +1,3 @@
-# compare-classifiers
-
 ## Uso de Métodos de Aprendizaje Automático y teledetección para clasificación de uso y cobertura del suelo en un valle semiárido de la Patagonia
 
 <!-- TABLE OF CONTENTS -->
