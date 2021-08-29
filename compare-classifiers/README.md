@@ -44,7 +44,7 @@ Para correr una copia local de este proyecto siga estos sencillos pasos.
   
  ### Installation
 
-1. Descargar las imagenes de entrenamiento y validación [Link](https://drive.google.com/drive/folders/1xSGD-oiCKO55FVOTxMvQR-ePt-nucC38?usp=sharing) o preparar las suyas. Si usa las imagenes descargadas tenga en cuenta que fueron preparadas y particionadas con [Partition](https://github.com/aletrujim/SatRed/tree/main/partition)
+1. Descargar las imagenes de entrenamiento y validación [Link](https://drive.google.com/drive/folders/1Y68DvzrQ0ahoN0zNH-h17x6bjXxJqXim?usp=sharing) o preparar las suyas. Si usa las imagenes descargadas tenga en cuenta que fueron preparadas y particionadas con [Partition](https://github.com/aletrujim/SatRed/tree/main/partition)
 3. Clone the repo
    ```sh
    git clone https://github.com/aletrujim/SatRed.git
