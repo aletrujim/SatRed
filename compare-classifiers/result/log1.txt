@@ -1,0 +1,151 @@
+
+Mon Mar  1 21:26:36 2021
+
+Train images: 
+image: train
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+Test images: 
+image: test
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+TRAIN
+Dataset shape = (247575, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+
+TEST
+Dataset shape = (66641, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+Classifier: Random Forest
+
+ start train: 21:26:58
+
+Train score:  0.8
+Validation score: 0.799
+Test score: 0.814
+
+ end train: 21:26:59
+
+
+ start test: 21:26:59
+
+
+Metrics Random Forest
+
+True positive = 138
+False positive = 0
+False negative = 44
+True negative = 0
+Kappa = 0.736
+Accuracy = 0.814
+F1 score = 0.770
+Hamming loss = 0.186
+Precision score = 0.754
+Recall score = 0.814
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.73      0.08      0.14      1811
+           5       0.00      0.00      0.00      5050
+           7       0.81      0.96      0.87     21700
+          10       0.98      1.00      0.99     11084
+          12       0.82      0.47      0.60      4216
+          15       0.75      0.89      0.82     22780
+
+    accuracy                           0.81     66641
+   macro avg       0.68      0.57      0.57     66641
+weighted avg       0.75      0.81      0.77     66641
+
+
+ end test: 21:27:27
+
+Classifier: Multi-layer Perceptron
+
+ start train: 21:27:27
+
+Train score:  0.773
+Validation score: 0.775
+Test score: 0.794
+
+ end train: 21:30:48
+
+
+ start test: 21:30:48
+
+
+Metrics Multi-layer Perceptron
+
+True positive = 0
+False positive = 0
+False negative = 0
+True negative = 0
+Kappa = 0.707
+Accuracy = 0.794
+F1 score = 0.742
+Hamming loss = 0.206
+Precision score = 0.713
+Recall score = 0.794
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.00      0.00      0.00      1811
+           5       0.00      0.00      0.00      5050
+           7       0.79      0.96      0.86     21700
+          10       0.94      1.00      0.97     11084
+          12       0.74      0.28      0.41      4216
+          15       0.74      0.88      0.80     22780
+
+    accuracy                           0.79     66641
+   macro avg       0.54      0.52      0.51     66641
+weighted avg       0.71      0.79      0.74     66641
+
+
+ end test: 21:37:32
+
+Classifier: AdaBoost
+
+ start train: 21:37:32
+
+Train score:  0.783
+Validation score: 0.783
+Test score: 0.773
+
+ end train: 21:37:49
+
+
+ start test: 21:37:49
+
+
+Metrics AdaBoost
+
+True positive = 615
+False positive = 82
+False negative = 345
+True negative = 1797
+Kappa = 0.696
+Accuracy = 0.773
+F1 score = 0.769
+Hamming loss = 0.227
+Precision score = 0.786
+Recall score = 0.773
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.57      0.34      0.43      1811
+           5       0.60      0.36      0.45      5050
+           7       0.88      0.72      0.79     21700
+          10       0.85      1.00      0.92     11084
+          12       0.45      0.83      0.58      4216
+          15       0.79      0.83      0.81     22780
+
+    accuracy                           0.77     66641
+   macro avg       0.69      0.68      0.66     66641
+weighted avg       0.79      0.77      0.77     66641
+
+
+ end test: 21:43:28
+

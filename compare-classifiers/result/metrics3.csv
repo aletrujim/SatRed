@@ -1,0 +1,3 @@
+classifier,kappa,acc,f1,hamming,precision,recall
+classifier,kappa,acc,f1,hamming,precision,recall
+K-Neighbors,0.8490078062087306,0.8887771792139973,0.8883190402872468,0.11122282078600261,0.8883414694808562,0.8887771792139973

@@ -1,0 +1,100 @@
+
+Mon Mar  1 21:51:51 2021
+
+Train images: 
+image: train
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+Test images: 
+image: test
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+TRAIN
+Dataset shape = (247575, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+
+TEST
+Dataset shape = (66641, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+Classifier: K-Neighbors
+
+ start train: 21:52:05
+
+Train score:  0.968
+Validation score: 0.932
+Test score: 0.889
+
+ end train: 21:52:28
+
+
+ start test: 21:52:28
+
+
+Tue Mar  2 10:59:48 2021
+
+Train images: 
+image: train
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+Test images: 
+image: test
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+TRAIN
+Dataset shape = (247575, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+
+TEST
+Dataset shape = (66641, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+Classifier: K-Neighbors
+
+ start train: 11:00:09
+
+Train score:  0.968
+Validation score: 0.932
+Test score: 0.889
+
+ end train: 11:00:32
+
+
+ start test: 11:00:32
+
+
+Metrics K-Neighbors
+
+True positive = 937
+False positive = 66
+False negative = 188
+True negative = 3318
+Kappa = 0.849
+Accuracy = 0.889
+F1 score = 0.888
+Hamming loss = 0.111
+Precision score = 0.888
+Recall score = 0.889
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.60      0.52      0.55      1811
+           5       0.65      0.66      0.65      5050
+           7       0.93      0.93      0.93     21700
+          10       0.99      1.00      1.00     11084
+          12       0.96      0.87      0.91      4216
+          15       0.86      0.88      0.87     22780
+
+    accuracy                           0.89     66641
+   macro avg       0.83      0.81      0.82     66641
+weighted avg       0.89      0.89      0.89     66641
+
+
+ end test: 12:17:38
+
