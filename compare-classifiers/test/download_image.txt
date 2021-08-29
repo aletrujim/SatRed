@@ -1,1 +1,6 @@
+Download test images: 
 
+test_LandCover.tif
+test_Sen2.tif
+
+https://drive.google.com/drive/folders/1akqx0QYS4uyU-jVgvCpRPKEf6kHsENw9?usp=sharing
