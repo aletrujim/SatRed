@@ -31,6 +31,8 @@ Comparamos 7 métodos tradicionales de aprendizaje automático supervisado aplic
 
 Para correr una copia local de este proyecto siga estos sencillos pasos.
 
+Todos los procedimientos se llevaron a cabo en una máquina virtual (Microsoft Azure 2), con el sistema operativo Windows Server 2016 Datacenter, de tamaño estándar NC6 (6 vCPUs [Intel Xeon CPU E5-2690 v3 2,60 GHz], 56 GB de memoria RAM y un co-procesador GPU NVIDIA Tesla K80). Los algoritmos se implementaron utilizando el lenguaje de programación Python. Se utilizó el paquete Rasterio para acceder y procesar los datos ráster geoespaciales, y Shapely para la manipulación de polígonos. 
+
 ### Prerequisites
 
 * GDAL
