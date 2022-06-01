@@ -1,0 +1,104 @@
+
+Metrics
+True positive = 11
+False positive = 1
+False negative = 0
+True negative = 42
+Kappa = 0.870
+Accuracy = 0.917
+F1 score = 0.917
+Hamming loss = 0.083
+Precision score = 0.929
+Recall score = 0.917
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.92      0.46      0.61        24
+           5       0.69      0.89      0.78        47
+           7       0.95      0.95      0.95        63
+          10       1.00      1.00      1.00         1
+          12       1.00      0.94      0.97       306
+          15       0.81      0.93      0.87       103
+
+    accuracy                           0.92       544
+   macro avg       0.90      0.86      0.86       544
+weighted avg       0.93      0.92      0.92       544
+
+
+Metrics
+True positive = 11
+False positive = 1
+False negative = 0
+True negative = 42
+Kappa = 0.870
+Accuracy = 0.917
+F1 score = 0.917
+Hamming loss = 0.083
+Precision score = 0.929
+Recall score = 0.917
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.92      0.46      0.61        24
+           5       0.69      0.89      0.78        47
+           7       0.95      0.95      0.95        63
+          10       1.00      1.00      1.00         1
+          12       1.00      0.94      0.97       306
+          15       0.81      0.93      0.87       103
+
+    accuracy                           0.92       544
+   macro avg       0.90      0.86      0.86       544
+weighted avg       0.93      0.92      0.92       544
+
+
+Metrics
+True positive = 11
+False positive = 1
+False negative = 0
+True negative = 42
+Kappa = 0.870
+Accuracy = 0.917
+F1 score = 0.917
+Hamming loss = 0.083
+Precision score = 0.929
+Recall score = 0.917
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.92      0.46      0.61        24
+           5       0.69      0.89      0.78        47
+           7       0.95      0.95      0.95        63
+          10       1.00      1.00      1.00         1
+          12       1.00      0.94      0.97       306
+          15       0.81      0.93      0.87       103
+
+    accuracy                           0.92       544
+   macro avg       0.90      0.86      0.86       544
+weighted avg       0.93      0.92      0.92       544
+
+
+Metrics
+True positive = 11
+False positive = 1
+False negative = 0
+True negative = 42
+Kappa = 0.870
+Accuracy = 0.917
+F1 score = 0.917
+Hamming loss = 0.083
+Precision score = 0.929
+Recall score = 0.917
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.92      0.46      0.61        24
+           5       0.69      0.89      0.78        47
+           7       0.95      0.95      0.95        63
+          10       1.00      1.00      1.00         1
+          12       1.00      0.94      0.97       306
+          15       0.81      0.93      0.87       103
+
+    accuracy                           0.92       544
+   macro avg       0.90      0.86      0.86       544
+weighted avg       0.93      0.92      0.92       544
+

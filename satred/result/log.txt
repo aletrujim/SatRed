@@ -1,0 +1,256 @@
+
+Thu Feb 25 19:42:01 2021
+
+SATRED 250 epochs
+
+Train images: 
+image: train
+size: (7942, 2900)
+bands: 10
+data classes: [-999, 4, 5, 7, 10, 12, 15]
+
+Test images: 
+image: test
+size: (7942, 2900)
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+TRAIN
+Dataset shape = (247575, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+model used in: result/satred_model.h5
+Train score = 0.916
+Validation score = 0.915
+Model summary = None
+
+TEST
+Dataset shape = (66641, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+Eval score = 0.925
+
+Metrics
+True positive = 904
+False positive = 32
+False negative = 32
+True negative = 4144
+Kappa = 0.898
+Accuracy = 0.925
+F1 score = 0.923
+Hamming loss = 0.075
+Precision score = 0.925
+Recall score = 0.925
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.87      0.50      0.63      1811
+           5       0.76      0.82      0.79      5050
+           7       0.95      0.95      0.95     21700
+          10       0.99      1.00      0.99     11084
+          12       0.92      0.96      0.94      4216
+          15       0.91      0.91      0.91     22780
+
+    accuracy                           0.92     66641
+   macro avg       0.90      0.86      0.87     66641
+weighted avg       0.93      0.92      0.92     66641
+
+
+ start test: 19:42:33
+
+
+ finish test: 19:48:39
+
+Show new raster in result/test_satred_segmented.tif
+
+Mon Mar  1 17:44:58 2021
+
+SATRED 250 epochs
+
+Train images: 
+image: train
+size: (7942, 2900)
+bands: 10
+data classes: [-999, 4, 5, 7, 10, 12, 15]
+
+Test images: 
+image: test
+size: (7942, 2900)
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+TRAIN
+Dataset shape = (247575, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+model used in: result/satred_model.h5
+Train score = 0.916
+Validation score = 0.915
+Model summary = None
+
+TEST
+Dataset shape = (66641, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+Eval score = 0.925
+
+Metrics
+True positive = 904
+False positive = 32
+False negative = 32
+True negative = 4144
+Kappa = 0.898
+Accuracy = 0.925
+F1 score = 0.923
+Hamming loss = 0.075
+Precision score = 0.925
+Recall score = 0.925
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.87      0.50      0.63      1811
+           5       0.76      0.82      0.79      5050
+           7       0.95      0.95      0.95     21700
+          10       0.99      1.00      0.99     11084
+          12       0.92      0.96      0.94      4216
+          15       0.91      0.91      0.91     22780
+
+    accuracy                           0.92     66641
+   macro avg       0.90      0.86      0.87     66641
+weighted avg       0.93      0.92      0.92     66641
+
+
+ start test: 17:45:38
+
+
+ finish test: 17:51:33
+
+Show new raster in result/test_satred_segmented.tif
+
+Mon Mar  1 18:01:32 2021
+
+SATRED 250 epochs
+
+Train images: 
+image: train
+size: (7942, 2900)
+bands: 10
+data classes: [-999, 4, 5, 7, 10, 12, 15]
+
+Test images: 
+image: test
+size: (7942, 2900)
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+TRAIN
+Dataset shape = (247575, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+model used in: result/satred_model.h5
+Train score = 0.916
+Validation score = 0.915
+Model summary = None
+
+TEST
+Dataset shape = (66641, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+Eval score = 0.925
+
+Metrics
+True positive = 904
+False positive = 32
+False negative = 32
+True negative = 4144
+Kappa = 0.898
+Accuracy = 0.925
+F1 score = 0.923
+Hamming loss = 0.075
+Precision score = 0.925
+Recall score = 0.925
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.87      0.50      0.63      1811
+           5       0.76      0.82      0.79      5050
+           7       0.95      0.95      0.95     21700
+          10       0.99      1.00      0.99     11084
+          12       0.92      0.96      0.94      4216
+          15       0.91      0.91      0.91     22780
+
+    accuracy                           0.92     66641
+   macro avg       0.90      0.86      0.87     66641
+weighted avg       0.93      0.92      0.92     66641
+
+
+ start test: 18:02:07
+
+
+ finish test: 18:08:13
+
+Show new raster in result/test_satred_segmented.tif
+
+Mon Mar  1 18:36:23 2021
+
+SATRED 250 epochs
+
+Train images: 
+image: train
+size: (7942, 2900)
+bands: 10
+data classes: [-999, 4, 5, 7, 10, 12, 15]
+
+Test images: 
+image: test
+size: (7942, 2900)
+bands: 10
+classes: [-999, 4, 5, 7, 10, 12, 15]
+
+TRAIN
+Dataset shape = (247575, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+model used in: result/satred_model.h5
+Train score = 0.916
+Validation score = 0.915
+Model summary = None
+
+TEST
+Dataset shape = (66641, 10)
+Classes = [4, 5, 7, 10, 12, 15]
+
+Eval score = 0.925
+
+Metrics
+True positive = 904
+False positive = 32
+False negative = 32
+True negative = 4144
+Kappa = 0.898
+Accuracy = 0.925
+F1 score = 0.923
+Hamming loss = 0.075
+Precision score = 0.925
+Recall score = 0.925
+Classification report =
+               precision    recall  f1-score   support
+
+           4       0.87      0.50      0.63      1811
+           5       0.76      0.82      0.79      5050
+           7       0.95      0.95      0.95     21700
+          10       0.99      1.00      0.99     11084
+          12       0.92      0.96      0.94      4216
+          15       0.91      0.91      0.91     22780
+
+    accuracy                           0.92     66641
+   macro avg       0.90      0.86      0.87     66641
+weighted avg       0.93      0.92      0.92     66641
+
+
+ start test: 18:36:57
+
+
+ finish test: 18:43:17
+
+Show new raster in result/test_satred_segmented.tif
