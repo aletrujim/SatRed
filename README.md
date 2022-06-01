@@ -42,6 +42,10 @@ To run a local copy of this project follow these simple steps:
   ```sh
   pip install GDAL
   ```
+* Tensorflow
+  ```sh
+  pip install --upgrade tensorflow
+  ```
 * scikit-learn
   ```sh
   pip install scikit-learn
