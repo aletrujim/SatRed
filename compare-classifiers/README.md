@@ -62,6 +62,8 @@ Para correr una copia local de este proyecto siga estos sencillos pasos.
    
 <!-- RESULTS -->
 ## Results
+![results](https://github.com/aletrujim/compare-classifiers/blob/main/images/fig2.png)
+![results](https://github.com/aletrujim/compare-classifiers/blob/main/images/fig3.png)
 
 <!-- CONTACT -->
 ## Contact
