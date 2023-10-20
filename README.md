@@ -65,6 +65,7 @@ To run a local copy of this project follow these simple steps:
 4. Run python script
    ```sh
    python compare-classifiers.py --train=train --test=test --segmented=result
+   python satred.py --train=train --test=test --segmented=result --epochs=250
    ```
    
 <!-- RESULTS -->
