@@ -1,0 +1,11 @@
+clase,min_pix,prioridad,descripcion
+2,45,200,Pastura abandonada
+4,45,200,Frutales
+5,45,300,Hortalizas
+7,15,200,Arbustal
+15,45,200,Pasturas
+13,15,500,Invernaderos
+9,15,300,Corral
+10,0,500,Agua
+11,0,700,Arboles
+12,15,600,Construido
