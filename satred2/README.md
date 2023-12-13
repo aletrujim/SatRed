@@ -50,7 +50,7 @@ Si utilizas estos datos o el modelo *SatRed v2* en su investigación o trabajo, 
 <!-- CONTACT -->
 ## Contacto
 
-Alexa Trujillo - [@aletrujim](https://twitter.com/aletrujim)
+Ana Liberoff - [@AnaLiberoff]([https://twitter.com/AnaLiberoff)
 
 Project Link: [https://github.com/aletrujim/SatRed](https://github.com/aletrujim/SatRed)
  
