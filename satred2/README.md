@@ -22,7 +22,7 @@ Tecnología y participación social para el mapeo de uso y cobertura del suelo e
 
 ![satred](https://github.com/aletrujim/SatRed/blob/main/images/fig4.png)
 
-el objetivo general de este trabajo es combinar procesos sociales y tecnológicos para desarrollar un mapa de UyCS del valle productivo, en base al algoritmo  desarrollado previamente por Trujillo et al. (2022), con una definición de categorías de  UyCS que resulte adecuada para la diversidad de usuarios/as del mismo. Respecto a los procesos tecnológicos, en este trabajo se utilizaron imágenes multi-temporales (combinación de imágenes de varias fechas), que permiten una mejor distinción/discriminación  entre los cultivos al capturar las diferencias que se producen en distintos momentos del año debido a diferentes ritmos de crecimiento, y estados fenológicos y fisiológicos de los cultivos. Respecto a los procesos sociales, se favorecieron diferentes espacios de intercambio de saberes y experiencias con personas de distintos ámbitos del valle mediante diferentes metodologías (talleres participativos, encuestas, encuentros, salidas a campo), que permitieron retroalimentar el proceso de elaboración del mapa de UyCS. 
+El objetivo general de este trabajo es combinar procesos sociales y tecnológicos para desarrollar un mapa de UyCS del valle productivo, en base al algoritmo  desarrollado previamente por Trujillo et al. (2022), con una definición de categorías de  UyCS que resulte adecuada para la diversidad de usuarios/as del mismo. Respecto a los procesos tecnológicos, en este trabajo se utilizaron imágenes multi-temporales (combinación de imágenes de varias fechas), que permiten una mejor distinción/discriminación  entre los cultivos al capturar las diferencias que se producen en distintos momentos del año debido a diferentes ritmos de crecimiento, y estados fenológicos y fisiológicos de los cultivos. Respecto a los procesos sociales, se favorecieron diferentes espacios de intercambio de saberes y experiencias con personas de distintos ámbitos del valle mediante diferentes metodologías (talleres participativos, encuestas, encuentros, salidas a campo), que permitieron retroalimentar el proceso de elaboración del mapa de UyCS. 
 
    
 <!-- RESULTS -->
@@ -34,7 +34,7 @@ El modelo SatRed v.2 utilizado con imágenes multitemporales y sumado a  la inco
 
 <!-- CITATION -->
 ## Cita
-Si utilizas estos datos o el modelo *SatRed v2* en su investigación o trabajo, cite este proyecto
+Si utilizas estos datos o el modelo *SatRed v2* en su investigación o trabajo, cite este trabajo
 ```
 @article{trujillo2022satred,
   title={SatRed: New classification land use/land cover model based on multi-spectral satellite images and neural networks applied to a semiarid valley of Patagonia},
