@@ -1,6 +1,6 @@
 ## SatRed v.2: Modelo de clasificación de uso/cobertura del suelo basado en imágenes satelitales multiespectrales y redes neuronales aplicado a un valle semiárido de la Patagonia
 
-![satred](https://github.com/aletrujim/SatRed/blob/main/images/Fig3.png)
+![satred](https://github.com/aletrujim/SatRed/blob/main/images/satred_arquitectura.png)
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
