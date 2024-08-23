@@ -27,7 +27,7 @@
 
 Tecnología y participación social para el mapeo de uso y cobertura del suelo en el Valle Inferior del Río Chubut
 
-![satred](https://github.com/aletrujim/SatRed/blob/main/images/fig4.png)
+![satred](https://github.com/aletrujim/SatRed/blob/main/images/esquema_stared2.png)
 
 El objetivo general de este trabajo es combinar procesos sociales y tecnológicos para desarrollar un mapa de UyCS del valle productivo, en base al algoritmo  desarrollado previamente por Trujillo et al. (2022), con una definición de categorías de  UyCS que resulte adecuada para la diversidad de usuarios/as del mismo. Respecto a los procesos tecnológicos, en este trabajo se utilizaron imágenes multi-temporales (combinación de imágenes de varias fechas), que permiten una mejor distinción/discriminación  entre los cultivos al capturar las diferencias que se producen en distintos momentos del año debido a diferentes ritmos de crecimiento, y estados fenológicos y fisiológicos de los cultivos. Respecto a los procesos sociales, se favorecieron diferentes espacios de intercambio de saberes y experiencias con personas de distintos ámbitos del valle mediante diferentes metodologías (talleres participativos, encuestas, encuentros, salidas a campo), que permitieron retroalimentar el proceso de elaboración del mapa de UyCS. 
 
@@ -72,6 +72,7 @@ Los modelos presentados en este trabajo se entrenaron en una máquina virtual pa
 ## Resultados
 
 ![satred results](https://github.com/aletrujim/SatRed/blob/main/images/fig5.png)
+![satred results](https://github.com/aletrujim/SatRed/blob/main/images/results_satred2.png)
 
 El modelo SatRed v.2 utilizado con imágenes multitemporales y sumado a  la incorporación del post-procesamiento, constituye una herramienta útil para la elaboración de mapas de UyCS, con la ventaja sustancial de que puede ser aplicada a diferentes periodos, regiones y conjuntos de datos. El uso de imágenes multi-temporales y la incorporación del post-procesamiento mejoró significativamente el desempeño global del modelo de clasificación, permitiendo incorporar 4 nuevas clases (pasturas degradadas y abandonadas, invernaderos, corrales y árboles), mejorando la delimitación de las parcelas y disminuyendo el efecto de “sal y pimienta”. Este nuevo producto  permite analizar en más detalle la dinámica productiva del valle como así también responder y avanzar sobre varias de las demandas identificadas en las instancias participativas. 
 
