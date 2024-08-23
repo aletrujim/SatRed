@@ -71,7 +71,7 @@ Los modelos presentados en este trabajo se entrenaron en una máquina virtual pa
 <!-- RESULTS -->
 ## Resultados
 
-![satred results](https://github.com/aletrujim/SatRed/blob/main/images/fig5.png)
+![satred results](https://github.com/aletrujim/SatRed/blob/main/images/mapa_satred2.png)
 ![satred results](https://github.com/aletrujim/SatRed/blob/main/images/results_satred2.png)
 
 El modelo SatRed v.2 utilizado con imágenes multitemporales y sumado a  la incorporación del post-procesamiento, constituye una herramienta útil para la elaboración de mapas de UyCS, con la ventaja sustancial de que puede ser aplicada a diferentes periodos, regiones y conjuntos de datos. El uso de imágenes multi-temporales y la incorporación del post-procesamiento mejoró significativamente el desempeño global del modelo de clasificación, permitiendo incorporar 4 nuevas clases (pasturas degradadas y abandonadas, invernaderos, corrales y árboles), mejorando la delimitación de las parcelas y disminuyendo el efecto de “sal y pimienta”. Este nuevo producto  permite analizar en más detalle la dinámica productiva del valle como así también responder y avanzar sobre varias de las demandas identificadas en las instancias participativas. 
