@@ -94,7 +94,7 @@ Si utilizas estos datos o el modelo *SatRed v.2* en su investigación o trabajo,
 <!-- CONTACT -->
 ## Contacto
 
-Ana Liberoff - [@AnaLiberoff](liberoff@cenpat-conicet-gob.ar)
+Ana Liberoff - [liberoff@cenpat-conicet-gob.ar](liberoff@cenpat-conicet-gob.ar)
 
 Project Link: [https://github.com/aletrujim/SatRed](https://github.com/aletrujim/SatRed)
  
