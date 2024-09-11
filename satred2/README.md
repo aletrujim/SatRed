@@ -80,14 +80,14 @@ En Liberoff et. al (2024) el modelo SatRed v.2 se utilizó para elaborar un mapa
 ## Cita
 Si utilizas estos datos o el modelo *SatRed v.2* en su investigación o trabajo, cite este trabajo
 ```
-@article{trujillo2022satred,
-  title={SatRed: New classification land use/land cover model based on multi-spectral satellite images and neural networks applied to a semiarid valley of Patagonia},
-  author={Trujillo-Jim{\'e}nez, Magda Alexandra and Liberoff, Ana Laura and Pessacg, Natalia and Pacheco, Cristian and D{\'\i}az, Lucas and Flaherty, Silvia},
-  journal={Remote Sensing Applications: Society and Environment},
-  volume={26},
-  pages={100703},
-  year={2022},
-  publisher={Elsevier}
+@article{liberoff2024tecnologia,
+  title={Tecnolog{\'\i}a y participaci{\'o}n social para el mapeo de uso y cobertura del suelo en el Valle Inferior del R{\'\i}o Chubut: P{\'a}rrafos Geogr{\'a}ficos N° 23 vol. 1},
+  author={Liberoff, Ana L and Pessacg, Natalia L and Pacheco, Cristian and Trujillo-Jim{\'e}nez, Magda Alexandra and D{\'\i}az, Lucas and Flaherty, Silvia},
+  journal={P{\'a}rrafos Geogr{\'a}ficos},
+  volume={23},
+  number={1},
+  pages={88--114},
+  year={2024}
 }
 ```
 
