@@ -22,12 +22,11 @@ def list_images(path):
 
 # Convert segmentation array in new raster image
 def array2raster(name, array, metadata):
-    
     rows, cols = array.shape
     # save the array as a georeferenced file 
     array = array.astype(np.int32)
     with rasterio.open(name,'w',driver='GTiff', height=rows, width=cols, count=1, 
-                       dtype=array.dtype, crs=metadata['crs'], transform=metadata['transform']) as dst:
+                       dtype=array.dtype, crs=metadata['crs'], transform=metadata['transform'], nodata=metadata['nodata']) as dst:
             dst.write(array, 1)
             
 def raster_to_vector(raster_file, vector_file, driver, invalid_values = []):
@@ -62,27 +61,12 @@ def raster_to_vector(raster_file, vector_file, driver, invalid_values = []):
     
     return dst.path
 
-def write_raster(input_array, otput_file, template_raster, metadata = None):
-    data = gdal.Open(template_raster, gdalconst.GA_ReadOnly)
-    geo_transform = data.GetGeoTransform()
-    x_min = geo_transform[0]
-    y_max = geo_transform[3]
-    x_max = x_min + geo_transform[1] * data.RasterXSize
-    y_min = y_max + geo_transform[5] * data.RasterYSize
-    pixel_width = geo_transform[1]
-    x_res = data.RasterXSize
-    y_res = data.RasterYSize
-    
-    driver = gdal.GetDriverByName("GTiff")
-    dataset = driver.Create(otput_file, x_res, y_res, 1, gdal.GDT_Byte )
-    dataset.SetGeoTransform((x_min, pixel_width, 0, y_min, 0, pixel_width))
-    dataset.SetProjection(data.GetProjection())
-    band = dataset.GetRasterBand(1)
-    if metadata:
-        band.SetMetadata(metadata)
-    band.WriteArray(input_array)
-    dataset.FlushCache()
-    return None
+def write_raster(input_array, output_file, template_raster, metadata = None):
+    with rasterio.open(template_raster) as src:
+        rows, cols = input_array.shape
+        with rasterio.open(output_file,'w',driver='GTiff', height=rows, width=cols, count=1,
+                           dtype=input_array.dtype, crs=src.crs, transform=src.transform, nodata=src.nodata) as dst:
+                dst.write(input_array[::-1, :], 1)
 
 def rasterize_vectorfile(shp, attribute, template_raster, output):
     data = gdal.Open(template_raster, gdalconst.GA_ReadOnly)
@@ -96,15 +80,24 @@ def rasterize_vectorfile(shp, attribute, template_raster, output):
     mb_v = ogr.Open(shp)
     mb_l = mb_v.GetLayer()
     pixel_width = geo_transform[1]
-    target_ds = gdal.GetDriverByName('GTiff').Create(output, x_res, y_res, 1, gdal.GDT_Byte)
+    target_ds = gdal.GetDriverByName('GTiff').Create(output, x_res, y_res, 1, gdal.GDT_UInt32)
     target_ds.SetGeoTransform((x_min, pixel_width, 0, y_min, 0, pixel_width))
     band = target_ds.GetRasterBand(1)
-    NoData_value = -999999
+    NoData_value = -999
     band.SetNoDataValue(NoData_value)
     band.FlushCache()
     gdal.RasterizeLayer(target_ds, [1], mb_l, options=["ATTRIBUTE={}".format(attribute)])
     
     target_ds = None
+
+def fix_no_data_value(input_file, output_file, no_data_value=0):
+    with rasterio.open(input_file, "r+") as src:
+        src.nodata = no_data_value
+        with rasterio.open(output_file, 'w',  **src.profile) as dst:
+            for i in range(1, src.count + 1):
+                band = src.read(i)
+                band = np.where(band==no_data_value,no_data_value,band)
+                dst.write(band,i)
 
 
 

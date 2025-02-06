@@ -103,7 +103,9 @@ if __name__ == '__main__':
     with rasterio.open(flt_segmentation) as src:
         flt_array = src.read(1)
     print(flt_array.shape, landcover_array.shape)
-    learning.metrics(flt_array.flatten(), landcover_array.flatten(), file)
+    y = coords_test[0]
+    x = coords_test[1]
+    learning.metrics(flt_array[y, x].flatten(), landcover_array[y, x].flatten(), file)
     file.close() 
     #generate_report(args.segmented,name_landcover,flt_segmentation)
     

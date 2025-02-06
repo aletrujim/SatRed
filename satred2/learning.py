@@ -24,6 +24,7 @@ from sklearn.metrics import confusion_matrix, cohen_kappa_score, f1_score, Confu
 from sklearn.metrics import accuracy_score, classification_report, hamming_loss
 from sklearn.metrics import precision_score, recall_score
 from numba import jit, cuda
+import gc
 
 
 def generate_dataset(directory):
@@ -96,6 +97,12 @@ def train_model(data, classes,model_name,segmented_dir,epochs,file):
     x_train, x_test, y_train, y_test = train_test_split(data, classes, 
                                                         test_size=0.2, 
                                                         random_state=4) 
+                                                        
+    with tf.device('/cpu:0'):
+        x_train_tf = tf.convert_to_tensor(x_train, np.float32)
+        y_train_tf = tf.convert_to_tensor(y_train, np.float32)
+        x_test_tf = tf.convert_to_tensor(x_test, np.float32)
+        y_test_tf = tf.convert_to_tensor(y_test, np.float32)
     
     # Number of features (bands)
     n_features = x_train.shape[1] 
@@ -133,7 +140,7 @@ def train_model(data, classes,model_name,segmented_dir,epochs,file):
         # Train model
         print("x_train ", x_train.shape)
         print(("y_train ", y_train.shape))
-        history = model.fit(x_train, y_train, epochs=epochs, 
+        history = model.fit(x_train_tf, y_train_tf, epochs=epochs, 
                   #callbacks=[early_stopping_monitor],  
                   validation_split=0.1)
         
@@ -178,8 +185,8 @@ def train_model(data, classes,model_name,segmented_dir,epochs,file):
         file.write("model used in: {}\r\n".format(model_name))
 
     # Evaluate model with train and test data
-    score_train = model.evaluate(x_train, y_train)
-    score_test = model.evaluate(x_test, y_test)
+    score_train = model.evaluate(x_train_tf, y_train_tf)
+    score_test = model.evaluate(x_test_tf, y_test_tf)
     # Accuracy score of training
     acc_train = round(float(score_train[1]), 3)
     acc_val = round(float(score_test[1]), 3)
@@ -202,16 +209,25 @@ def train_model(data, classes,model_name,segmented_dir,epochs,file):
 # Evaluate model with test dataset
 def test_model(model, data_test, classes_test, segmented_dir, epochs, metadata, coords_test, test_dir, file):
     x_test, y_test = data_test, classes_test
+    
+    with tf.device('/cpu:0'):
+        x_test_tf = tf.convert_to_tensor(x_test, np.float32)
+        y_test_tf = tf.convert_to_tensor(y_test, np.float32)
        
+    print(x_test.shape, y_test.shape, x_test_tf.shape)
     # Score of evaluate (test images pixels) data
-    score_test = model.evaluate(x_test, y_test)
+    score_test = model.evaluate(x_test_tf, y_test_tf)
     acc_test = round(float(score_test[1]), 3)
     
     print("Test score = {}\r\n".format(acc_test))
     file.write("Eval score = {}\r\n".format(acc_test))
     
     # Predict class in evaluate pixels (test images pixels)
-    y_predictions = model.predict(x_test)
+    y_predictions = model.predict(x_test_tf)
+    #y_predictions = np.zeros((x_test.shape[0], 16))
+    #y_predictions[0:44702] = model.predict(x_test_tf[0:44702])
+    #_ = gc.collect()
+    #y_predictions[44702:] = model.predict(x_test_tf[44702:])
        
     # Create dataset of predict classes to pixels
     predict = [["pixel", "class", "predict"]]
