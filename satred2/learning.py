@@ -16,15 +16,12 @@ import tensorflow as tf
 from scipy import sparse
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
-from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.models import load_model
 from tensorflow.keras.initializers import glorot_uniform
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, cohen_kappa_score, f1_score, ConfusionMatrixDisplay
 from sklearn.metrics import accuracy_score, classification_report, hamming_loss
 from sklearn.metrics import precision_score, recall_score
-from numba import jit, cuda
-import gc
 
 
 def generate_dataset(directory):
@@ -93,7 +90,7 @@ def read_test_image(directory, iname):
 
 # Train model - Keras Sequential dense model
 #@jit(target_backend='cuda') 
-def train_model(data, classes,model_name,segmented_dir,epochs,file):   
+def train_model(data, classes, model_name, segmented_dir, epochs, logger):
     x_train, x_test, y_train, y_test = train_test_split(data, classes, 
                                                         test_size=0.2, 
                                                         random_state=4) 
@@ -115,7 +112,7 @@ def train_model(data, classes,model_name,segmented_dir,epochs,file):
         
         start_train = time.strftime("%H:%M:%S")
         print("\n start train: {}\r\n\n".format(start_train))
-        file.write("\n start train: {}\r\n\n".format(start_train))
+        logger.info("\n start train: {}\r\n\n".format(start_train))
         
         # Create model
         model = Sequential()
@@ -146,7 +143,7 @@ def train_model(data, classes,model_name,segmented_dir,epochs,file):
         
         fin_train = time.strftime("%H:%M:%S")
         print("\n finish train: {}\r\n\n".format(fin_train))
-        file.write("\n finish train: {}\r\n\n".format(fin_train))
+        logger.info("\n finish train: {}\r\n\n".format(fin_train))
         
         ## Plot accuracy vs epochs
         fig, (ax1, ax2) = plt.subplots(2)
@@ -175,14 +172,13 @@ def train_model(data, classes,model_name,segmented_dir,epochs,file):
         # Save model
         new_model = str(segmented_dir + "/satred_model.h5")
         model.save(new_model)
-        file.write("New model save in: {}\r\n".format(new_model))
-        
+        logger.info("New model save in: {}\r\n".format(new_model))
     else:
         # Pre-training model
         model = load_model(model_name, 
                            custom_objects={'GlorotUniform': glorot_uniform()})
-        
-        file.write("model used in: {}\r\n".format(model_name))
+
+        logger.info("model used in: {}\r\n".format(model_name))
 
     # Evaluate model with train and test data
     score_train = model.evaluate(x_train_tf, y_train_tf)
@@ -192,22 +188,22 @@ def train_model(data, classes,model_name,segmented_dir,epochs,file):
     acc_val = round(float(score_test[1]), 3)
     
     print("Train score = {}\n".format(acc_train))
-    file.write("Train score = {}\r\n".format(acc_train))
+    logger.info("Train score = {}\r\n".format(acc_train))
     print("Validation score = {}\n".format(acc_val))
-    file.write("Validation score = {}\r\n".format(acc_val))
+    logger.info("Validation score = {}\r\n".format(acc_val))
     
     # plot model graphviz
     plotname = str(segmented_dir + "/satred_model.png")
     tf.keras.utils.plot_model(model, to_file=plotname, show_shapes=True)
     
     print("Model summary = {}\n".format(model.summary()))
-    file.write("Model summary = {}\r\n".format(model.summary()))
+    logger.info("Model summary = {}\r\n".format(model.summary()))
     
     return model
     
     
 # Evaluate model with test dataset
-def test_model(model, data_test, classes_test, segmented_dir, epochs, metadata, coords_test, test_dir, file):
+def test_model(model, data_test, classes_test, segmented_dir, epochs, metadata, coords_test, test_dir, logger):
     x_test, y_test = data_test, classes_test
     
     with tf.device('/cpu:0'):
@@ -220,14 +216,10 @@ def test_model(model, data_test, classes_test, segmented_dir, epochs, metadata, 
     acc_test = round(float(score_test[1]), 3)
     
     print("Test score = {}\r\n".format(acc_test))
-    file.write("Eval score = {}\r\n".format(acc_test))
+    logger.info("Eval score = {}\r\n".format(acc_test))
     
     # Predict class in evaluate pixels (test images pixels)
     y_predictions = model.predict(x_test_tf)
-    #y_predictions = np.zeros((x_test.shape[0], 16))
-    #y_predictions[0:44702] = model.predict(x_test_tf[0:44702])
-    #_ = gc.collect()
-    #y_predictions[44702:] = model.predict(x_test_tf[44702:])
        
     # Create dataset of predict classes to pixels
     predict = [["pixel", "class", "predict"]]
@@ -246,7 +238,7 @@ def test_model(model, data_test, classes_test, segmented_dir, epochs, metadata, 
     csvFile.close()
     
     # Generate metrics
-    metrics(y_test, y_pred,file)
+    metrics(y_test, y_pred, logger)
        
     # Confusion matrix
     cm = confusion_matrix(y_test, y_pred)
@@ -289,7 +281,7 @@ def test_model(model, data_test, classes_test, segmented_dir, epochs, metadata, 
     
     start_test = time.strftime("%H:%M:%S")
     print("\n start test: {}\r\n\n".format(start_test))
-    file.write("\n start test: {}\r\n\n".format(start_test))
+    logger.info("\n start test: {}\r\n\n".format(start_test))
 
     # Images to segmentate (test images)
     # Images to segmentate (test images)
@@ -310,27 +302,27 @@ def test_model(model, data_test, classes_test, segmented_dir, epochs, metadata, 
         
         # Create new raster
         new_name = str(segmented_dir + "/" + image + "_satred_segmented.tif")
-        array_to_raster(new_name, segmentation, sen2_gdal, file)
+        array_to_raster(new_name, segmentation, sen2_gdal, logger)
  
     return new_name
 
 
-def array_to_raster(new_name, segmentation, sen2_gdal, file):
+def array_to_raster(new_name, segmentation, sen2_gdal, logger):
     io.array2raster(new_name, segmentation, sen2_gdal)
         
     fin_test = time.strftime("%H:%M:%S")
     print("\n finish test: {}\r\n\n".format(fin_test))
-    file.write("\n finish test: {}\r\n\n".format(fin_test))
+    logger.info("\n finish test: {}\r\n\n".format(fin_test))
         
     print("Show new raster in {}\r\n".format(new_name))
-    file.write("Show new raster in {}\r\n".format(new_name))
+    logger.info("Show new raster in {}\r\n".format(new_name))
     
     return True
      
 
 # Metrics indices to log
-def metrics(y_true, y_pred, file):
-    file.write("\nMetrics\n")
+def metrics(y_true, y_pred, logger):
+    logger.info("\nMetrics\n")
     
     # Confusion matrix
     cm = confusion_matrix(y_true, y_pred)
@@ -339,45 +331,45 @@ def metrics(y_true, y_pred, file):
     fn = 'False negative = ' + str(cm[1][0])
     tn = 'True negative = ' + str(cm[1][1])
     cm_pn = str('\n' + tp + '\n' + fp + '\n' + fn + '\n' + tn + '\n')
-    file.write("{}".format(cm_pn))
+    logger.info("{}".format(cm_pn))
     
     # Kappa Index
     kappa = cohen_kappa_score(y_true, y_pred)
-    file.write("Kappa = {0:.3f}\r\n".format(kappa))
+    logger.info("Kappa = {0:.3f}\r\n".format(kappa))
         
     # Accuracy
     acc = accuracy_score(y_true, y_pred)
-    file.write("Accuracy = {0:.3f}\r\n".format(acc)) 
+    logger.info("Accuracy = {0:.3f}\r\n".format(acc))
     
     # F1 score
     f1 = f1_score(y_true, y_pred, average='weighted')
-    file.write("F1 score = {0:.3f}\r\n".format(f1))
+    logger.info("F1 score = {0:.3f}\r\n".format(f1))
     
     # Hamming loss
     hamming = hamming_loss(y_true, y_pred)
-    file.write("Hamming loss = {0:.3f}\r\n".format(hamming))
+    logger.info("Hamming loss = {0:.3f}\r\n".format(hamming))
 
     # Precision score
     precision = precision_score(y_true, y_pred, average='weighted') 
-    file.write("Precision score = {0:.3f}\r\n".format(precision))
+    logger.info("Precision score = {0:.3f}\r\n".format(precision))
     
     # Recall score
     recall = recall_score(y_true, y_pred, average='weighted')
-    file.write("Recall score = {0:.3f}\r\n".format(recall))
+    logger.info("Recall score = {0:.3f}\r\n".format(recall))
 
     # Classification report
     report = classification_report(y_true, y_pred)
-    file.write("Classification report =\r\n {}\r\n".format(report))
+    logger.info("Classification report =\r\n {}\r\n".format(report))
     
     return True
 
 
-def test_mode_classification(vector_segmented, vector_valid,output_dir,file):
+def test_mode_classification(vector_segmented, vector_valid, output_dir, logger):
     '''
     @param vector_segmented: vector file with the labeled polygons
     @param vector_valid: vector file with the ground truth labels
     @param output_dir: directory where to save the output
-    @param file: log file descriptor
+    @param logger: log file descriptor
     '''
     sdf = gpd.read_file(vector_segmented)
     vdf = gpd.read_file(vector_valid)
@@ -433,7 +425,7 @@ def test_mode_classification(vector_segmented, vector_valid,output_dir,file):
                 y_true = np.insert(y_true, idx + i, -1)
                 i += 1
                
-    metrics(y_true, y_pred, file)
+    metrics(y_true, y_pred, logger)
     
     return True
 

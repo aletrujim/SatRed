@@ -10,9 +10,7 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd 
 import rasterio as rio
-import tempfile 
-import config
-from data_io import fix_no_data_value
+import tempfile
 
 
 def merge_small_polygons(gdf, pixel_resolution, conf_df):
@@ -37,14 +35,6 @@ def merge_small_polygons(gdf, pixel_resolution, conf_df):
     return rdf 
 
 def rasterize_polygons_by_priority(gdf, shape, conf_df, img_path):
-    # we do not allow duplicate priorities
-    # for that reason we convert each priority in unique value
-    #conf_df['priority'] = 0
-    #for priority, grouped_df in conf_df.groupby(by='prioridad'):
-    #    i = 0
-    #    for index, row in grouped_df.iterrows():
-    #        conf_df.at[index, 'priority'] = row['prioridad'] + i
-    #        i += 1
 
     h, w = shape 
     raster_layers = np.zeros((len(conf_df), h, w), dtype=np.int16)
@@ -52,7 +42,6 @@ def rasterize_polygons_by_priority(gdf, shape, conf_df, img_path):
         # get the polygons of the current class
         current_class_gdf = gdf[gdf['raster_val'] == row['clase']] 
         
-        #current_class_gdf['data'] = row['priority']
         current_class_gdf['data'] = row['prioridad']
         shp = tempfile.mktemp('.shp')
         output_filepath = tempfile.mktemp('.tif')

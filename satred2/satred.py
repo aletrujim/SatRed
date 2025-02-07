@@ -17,19 +17,11 @@ import rasterio
 import time
 import timeit
 import numpy as np
-import data_io as io
 import pprint
-import os
 import learning
 import filtering  as flt
 import config as cfg
-from scipy import sparse
-from rasterio.windows import get_data_window, transform, shape
-
-def convert_sparse_matrix_to_sparse_tensor(X):
-    coo = X.tocoo()
-    indices = np.mat([coo.row, coo.col]).transpose()
-    return tf.SparseTensor(indices, coo.data, coo.shape)
+import logging as log
     
 def info_report(data):
     SECONDS_PER_MINUTE = 60
@@ -71,46 +63,48 @@ if __name__ == '__main__':
     
     # Log file
     name_file =  str(args.segmented + "/log.txt")
-    file = open(name_file, "a+")
+    logger = log.getLogger(__name__)
+    logger.setLevel(log.INFO)
+    handler = log.FileHandler(name_file, mode="a+")
+    formatter = log.Formatter("%(name)s %(asctime)s %(levelname)s %(message)s")
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
     now = time.strftime("%c")
-    file.write("\n{}\r\n\n".format(now))
-    file.write("SATRED {} epochs\r\n\n".format(args.epochs))
-    
-    
-    data_train, classes_train, _, _, _ = learning.generate_dataset(args.train)       
+    logger.info("\n{}\r\n\n".format(now))
+    logger.info("SATRED {} epochs\r\n\n".format(args.epochs))
+
+    data_train, classes_train, _, _, _ = learning.generate_dataset(args.train)
     data_test, classes_test, coords_test, metadata_test, landcover_array = learning.generate_dataset(args.test)
-    
+
     # Train model
     start_train = timeit.default_timer()
     epochs = int(args.epochs)
-    model = learning.train_model(data_train, classes_train,args.model,args.segmented,epochs,file)
+    model = learning.train_model(data_train, classes_train,args.model,args.segmented,epochs,logger)
     stop_train = timeit.default_timer()
-    
-    print("tiempo de entrenamiento", stop_train - start_train)
-        
+
+    log.info("tiempo de entrenamiento: {}".format(stop_train - start_train))
+
     # Test model and segmentate test images
     start_test = timeit.default_timer()
-    segmentation = learning.test_model(model, data_test, classes_test, args.segmented, epochs, metadata_test, coords_test, args.test, file)     
+    segmentation = learning.test_model(model, data_test, classes_test, args.segmented, epochs, metadata_test, coords_test, args.test, logger)
     stop_test = timeit.default_timer()
-    
-    print("tiempo de prueba", stop_test - start_test)
-    
+
+    log.info("tiempo de prueba: {}".format(stop_test - start_test))
+
     flt_segmentation = flt.filter_raster(segmentation, args.segmented, 'conf.csv')
 
     print("Segmented OK!")
-    
+
     ########## generate reports ###############
     with rasterio.open(flt_segmentation) as src:
         flt_array = src.read(1)
-    print(flt_array.shape, landcover_array.shape)
     y = coords_test[0]
     x = coords_test[1]
-    learning.metrics(flt_array[y, x].flatten(), landcover_array[y, x].flatten(), file)
-    file.close() 
-    #generate_report(args.segmented,name_landcover,flt_segmentation)
-    
+    learning.metrics(flt_array[y, x].flatten(), landcover_array[y, x].flatten(), logger)
+
     data = {
-        'training_time' : int(stop_train - start_train), 
+        'training_time' : int(stop_train - start_train),
         'testing_time'  : int(stop_test - start_test)
         }
     info_report(data)
